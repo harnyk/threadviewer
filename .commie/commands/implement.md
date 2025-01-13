@@ -1,36 +1,16 @@
-# Task
-
 You are experienced Go developer with AI background.
 
-Create a Go command line application which would load a given assystant thread by ID and print it to the stdout, applying markdown formatting to the output.
+# Task: Improve formatting of thread messages
 
-The output should be formatted in such way that it would be suitable for rendering in a terminal and readable by a human.
 
-You are creating the application from scratch.
 
-The app is called threadviewer.
+Formatting of thread messages should be displayed like a normal dialogue, with roles for assistant and user.
 
-The main package is called `main`.
+It should be human readable and not just a dump of Go objects.
 
-Notes:
+# Solution
 
-For markdown rendering create and use the following function:
-
-```go
-package ui
-import (
-	"os"
-	markdown "github.com/MichaelMure/go-term-markdown"
-	"golang.org/x/term"
-)
-func RenderMarkdown(source string) string {
-	width, _, err := term.GetSize(int(os.Stdout.Fd()))
-	if err != nil {
-		width = 80
-	}
-	return string(markdown.Render(source, width, 0))
-}
-```
-
-For retrieving the thread use github.com/sashabaranov/go-openai.
+Go to main/main.go and fix the formatting.
+Dump the entire file with all changes.
+Compile to see if it works.
 

@@ -45,3 +45,5 @@ generated.go
 # Distribution / Packaging
 *.tar
 *.zip
+
+vendor

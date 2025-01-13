@@ -1,10 +1,12 @@
-module threadviewer
+module github.com/harnyk/threadviwer
 
 go 1.22.6
 
 require (
 	github.com/MichaelMure/go-term-markdown v0.1.4
 	github.com/sashabaranov/go-openai v1.36.1
+	github.com/spf13/cobra v1.8.1
+	github.com/spf13/viper v1.19.0
 	golang.org/x/term v0.28.0
 )
 
@@ -34,11 +36,8 @@ require (
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spf13/afero v1.12.0 // indirect
 	github.com/spf13/cast v1.7.1 // indirect
-	github.com/spf13/cobra v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.19.0 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
-	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/exp v0.0.0-20250106191152-7588d65b2ba8 // indirect
 	golang.org/x/image v0.0.0-20191206065243-da761ea9ff43 // indirect

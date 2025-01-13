@@ -1,0 +1,9 @@
+--- vendor/github.com/sashabaranov/go-openai/chat.go
++++ vendor/github.com/sashabaranov/go-openai/chat.go
+@@ -187,5 +187,6 @@
+ type FunctionCall struct {
+ 	Name string `json:"name,omitempty"`
+ 	// call function with arguments in JSON format
+ 	Arguments string `json:"arguments,omitempty"`
++	Output    string `json:"output,omitempty"`
+ }

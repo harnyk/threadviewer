@@ -5,13 +5,7 @@ items:
     stdout with markdown formatting suitable for terminal rendering.\n\nKey Features:\n-
     Loads threads using the OpenAI API.\n- Formats and prints threads with markdown
     rendering.\n- Uses Cobra for command-line parsing.\n- Uses Viper for configuration
-    management, including automatic environment variable binding.\n\nProject Structure:\n```\n.
-    \n├── .commie/\n│   ├── commands/\n│   │   └── implement.md\n│   └── memory.yaml\n├──
-    .env\n├── .gitignore\n├── go.mod\n├── go.sum\n└── main/\n    ├── main.go\n    ├──
-    threadviewer\n    └── ui/\n        └── markdown.go\n```\n\nGetting Started:\n1.
-    Clone the repository.\n2. Set up your environment variables in the .env file.\n3.
-    Build the project using go build -o threadviewer.\n4. Run the application with
-    the thread ID as an argument."
+    management, including automatic environment variable binding."
   tags:
   - project_info
   - threadviewer
