@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
@@ -20,11 +21,12 @@ var rootCmd = &cobra.Command{
 	Short: "threadviewer is a CLI tool to view threads from OpenAI",
 	Run: func(cmd *cobra.Command, args []string) {
 		client := openai.NewClient(apiKey)
-		thread, err := client.RetrieveThread(threadID)
+		ctx := context.Background()
+		thread, err := client.RetrieveThread(ctx, threadID)
 		if err != nil {
 			log.Fatalf("Error retrieving thread: %v", err)
 		}
-		
+
 		markdownContent := formatThreadAsMarkdown(thread)
 		formattedOutput := ui.RenderMarkdown(markdownContent)
 		fmt.Println(formattedOutput)
@@ -41,7 +43,7 @@ func initConfig() {
 	viper.AutomaticEnv()
 	viper.SetEnvPrefix("THREADVIEWER")
 	viper.BindEnv("API_KEY")
-	
+
 	apiKey = viper.GetString("API_KEY")
 	if apiKey == "" {
 		log.Fatal("API_KEY environment variable is required")
