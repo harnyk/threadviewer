@@ -17,12 +17,6 @@ Threadviewer is a Go command-line application designed to load a given assistant
 
 ### Installation
 
-#### Using Go:
-
-```sh
-go install github.com/harnyk/threadviewer/cmd/threadviewer@latest
-```
-
 #### Using Eget:
 
 ```sh
