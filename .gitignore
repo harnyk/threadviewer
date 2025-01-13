@@ -1,0 +1,47 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go compiler caches
+*.o
+
+# Go workspace file
+go.work
+
+# Go mod cache
+.cache
+
+# Go env file
+.env
+
+# Go build files
+o
+
+# Directory created by go get
+pkg/
+
+# Directory created by go install
+bin/
+
+# Old school object files
+*.[568ao]
+*.cgo2.c
+
+# Directory created by command 'go generate'
+generated.go
+
+# Distribution / Packaging
+*.tar
+*.zip

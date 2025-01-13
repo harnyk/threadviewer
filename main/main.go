@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/sashabaranov/go-openai"
-	"ui"
+	"threadviewer/main/ui"
 )
 
 var (
@@ -20,7 +20,7 @@ var rootCmd = &cobra.Command{
 	Short: "threadviewer is a CLI tool to view threads from OpenAI",
 	Run: func(cmd *cobra.Command, args []string) {
 		client := openai.NewClient(apiKey)
-		thread, err := client.GetThread(threadID)
+		thread, err := client.RetrieveThread(threadID)
 		if err != nil {
 			log.Fatalf("Error retrieving thread: %v", err)
 		}
