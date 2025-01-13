@@ -1,11 +1,23 @@
 items:
+- id: project_info/threadviewer/config
+  content: Config path is <config>/.threadviewer.yaml. Config file is in YAML format.
+  tags:
+  - project_info
+  - threadviewer
+  - getting_started
+  - project_structure
 - id: project_info/threadviewer
-  content: "Project Name: Threadviewer\n\nDescription:\nThreadviewer is a Go command-line
-    application designed to load a given assistant thread by ID and print it to the
-    stdout with markdown formatting suitable for terminal rendering.\n\nKey Features:\n-
-    Loads threads using the OpenAI API.\n- Formats and prints threads with markdown
-    rendering.\n- Uses Cobra for command-line parsing.\n- Uses Viper for configuration
-    management, including automatic environment variable binding."
+  content: |-
+    Project Name: Threadviewer
+
+    Description:
+    Threadviewer is a Go command-line application designed to load a given assistant thread by ID and print it to the stdout with markdown formatting suitable for terminal rendering.
+
+    Key Features:
+    - Loads threads using the OpenAI API.
+    - Formats and prints threads with markdown rendering.
+    - Uses Cobra for command-line parsing.
+    - Uses Viper for configuration management, including automatic environment variable binding.
   tags:
   - project_info
   - threadviewer

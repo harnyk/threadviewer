@@ -1,16 +1,19 @@
 You are experienced Go developer with AI background.
 
-# Task: Improve formatting of thread messages
+# Task: Add support for config file in main.go
+
+Files:
+  - MAIN: cmd/threadviewer/main.go
 
 
+# Solution:
 
-Formatting of thread messages should be displayed like a normal dialogue, with roles for assistant and user.
+Research the entire MAIN.
 
-It should be human readable and not just a dump of Go objects.
+Add support for cross-platform loading of config files from <config>/.threadviewer.yaml
 
-# Solution
+Keep in mind using Viper and Cobra.
 
-Go to main/main.go and fix the formatting.
-Dump the entire file with all changes.
-Compile to see if it works.
+Be smart and tedious.
 
+Add config path logging through log package.

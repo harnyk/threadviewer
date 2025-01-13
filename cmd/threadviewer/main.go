@@ -15,8 +15,9 @@ import (
 )
 
 var (
-	threadID string
-	apiKey   string
+	threadID   string
+	apiKey     string
+	configPath string
 )
 
 var rootCmd = &cobra.Command{
@@ -77,12 +78,28 @@ func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.PersistentFlags().StringVarP(&threadID, "threadID", "t", "", "Thread ID to retrieve")
 	rootCmd.PersistentFlags().StringVar(&apiKey, "apiKey", "", "OpenAI API Key")
+	rootCmd.PersistentFlags().StringVar(&configPath, "config", "", "Config file path")
 }
 
 func initConfig() {
+	if configPath != "" {
+		viper.SetConfigFile(configPath)
+	} else {
+		home, err := os.UserHomeDir()
+		cobra.CheckErr(err)
+
+		viper.AddConfigPath(".")
+		viper.AddConfigPath(home)
+		viper.SetConfigName(".threadviewer")
+		viper.SetConfigType("yaml")
+	}
+
 	viper.AutomaticEnv()
-	// viper.SetEnvPrefix("THREADVIEWER")
 	viper.BindEnv("API_KEY")
+
+	if err := viper.ReadInConfig(); err == nil {
+		log.Printf("Using config file: %s", viper.ConfigFileUsed())
+	}
 
 	apiKey = viper.GetString("API_KEY")
 	if apiKey == "" {
