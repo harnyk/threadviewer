@@ -5,5 +5,15 @@ dotenv:
 
 tasks:
   dev:
+    aliases:
+      - d
     cmds:
       - go run ./cmd/threadviewer/
+  install:
+    aliases:
+      - i
+    cmds:
+      - rm -rf dist
+      - goreleaser --snapshot
+      - cp dist/threadviwer_linux_amd64_v1/threadviewer ~/bin
+

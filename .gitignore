@@ -47,3 +47,5 @@ generated.go
 *.zip
 
 vendor
+
+dist
