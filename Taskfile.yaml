@@ -15,5 +15,5 @@ tasks:
     cmds:
       - rm -rf dist
       - goreleaser --snapshot
-      - cp dist/threadviwer_linux_amd64_v1/threadviewer ~/bin
+      - cp dist/threadviewer_linux_amd64_v1/threadviewer ~/bin
 

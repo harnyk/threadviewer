@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/harnyk/threadviwer/internal/ui"
+	"github.com/harnyk/threadviewer/internal/ui"
 	"github.com/sashabaranov/go-openai"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

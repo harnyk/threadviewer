@@ -1,4 +1,4 @@
-module github.com/harnyk/threadviwer
+module github.com/harnyk/threadviewer
 
 go 1.22.6
 
