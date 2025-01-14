@@ -30,7 +30,7 @@ Download a binary from the [releases](https://github.com/harnyk/threadviewer/rel
 
 ### Configuration
 
-The configuration file is located at `<config>/config/.threadviewer.yaml` and is in YAML format. You can specify the config file path using the `--config` flag.
+The configuration file is located **in the current directory** or at `<config>/config/.threadviewer.yaml` and is in YAML format. You can specify the config file path using the `--config` flag.
 
 Example config file:
 
