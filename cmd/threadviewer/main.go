@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/harnyk/threadviewer/internal/client"
+	"github.com/harnyk/threadviewer/internal/thread_service"
 	"github.com/harnyk/threadviewer/internal/ui"
 	"github.com/sashabaranov/go-openai"
 	"github.com/spf13/cobra"
@@ -33,9 +33,11 @@ var rootCmd = &cobra.Command{
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 		openAI := openai.NewClient(apiKey)
+		srv := thread_service.NewThreadService(openAI)
+
 		ctx := context.Background()
 
-		threadInfo, err := client.GetThreadInfo(ctx, openAI, threadID)
+		threadInfo, err := srv.GetThreadInfo(ctx, threadID)
 		if err != nil {
 			log.Fatalf("Error retrieving thread: %v", err)
 		}

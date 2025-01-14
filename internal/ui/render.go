@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/harnyk/threadviewer/internal/client"
+	"github.com/harnyk/threadviewer/internal/thread_service"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -18,22 +18,43 @@ const (
 	whiteSquareEmoji emoji = "🔲"
 )
 
-func RenderThread(threadInfo *client.ThreadInfo) string {
+func RenderThread(threadInfo *thread_service.ThreadInfo) string {
 	content := strings.Builder{}
 	for _, message := range threadInfo.Messages {
 		if message.RunID != nil {
 			runStepList := threadInfo.RunStepListsByRunID[*message.RunID]
 			content.WriteString(renderRunStepList(runStepList))
 		}
+
 		content.WriteString(fmt.Sprintf("%s **%s**: %s\n",
 			getRoleEmoji(message.Role),
-			getRoleLabel(message.Role),
+			getRoleLabel(message, threadInfo),
 			renderMessageContentList(message.Content),
 		))
 		content.WriteString("\n---\n")
 
 	}
 	return content.String()
+}
+
+func getAssistantName(message openai.Message, threadInfo *thread_service.ThreadInfo) string {
+	if message.AssistantID == nil {
+		return ""
+	}
+
+	assistantID := *message.AssistantID
+	assistant, ok := threadInfo.AssistantsByID[assistantID]
+	if !ok {
+		return ""
+	}
+
+	namePtr := assistant.Name
+
+	if namePtr == nil {
+		return ""
+	}
+
+	return *namePtr
 }
 
 func renderMessageContentList(content []openai.MessageContent) string {
@@ -96,14 +117,18 @@ func renderMessageContent(content openai.MessageContent) string {
 	}
 }
 
-func getRoleLabel(role string) string {
-	switch role {
+func getRoleLabel(message openai.Message, threadInfo *thread_service.ThreadInfo) string {
+	switch message.Role {
 	case "user":
 		return "User"
 	case "assistant":
+		if message.AssistantID != nil {
+			asstName := getAssistantName(message, threadInfo)
+			return fmt.Sprintf("Assistant (%s)", asstName)
+		}
 		return "Assistant"
 	default:
-		return role
+		return message.Role
 	}
 }
 
