@@ -49,3 +49,4 @@ generated.go
 vendor
 
 dist
+.commie/commands/implement.md

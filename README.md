@@ -41,12 +41,15 @@ API_KEY: your_openai_api_key
 ### Usage
 
 ```sh
-./threadviewer --threadID <thread_id> --apiKey <api_key>
+./threadviewer <thread_id>
 ```
+
+### Positional Arguments
+
+- `<thread_id>`: Thread ID to retrieve.
 
 ### Flags
 
-- `--threadID`, `-t`: Thread ID to retrieve.
 - `--apiKey`: OpenAI API Key.
 - `--config`: Config file path.
 

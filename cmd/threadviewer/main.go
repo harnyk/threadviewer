@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -20,8 +21,16 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "threadviewer",
+	Use:   "threadviewer <threadID>",
 	Short: "threadviewer is a CLI tool to view threads from OpenAI",
+	Args: func(cmd *cobra.Command, args []string) error {
+		if len(args) < 1 {
+			return errors.New("threadID is required")
+		}
+
+		threadID = args[0]
+		return nil
+	},
 	Run: func(cmd *cobra.Command, args []string) {
 		openAI := openai.NewClient(apiKey)
 		ctx := context.Background()
@@ -39,7 +48,6 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().StringVarP(&threadID, "threadID", "t", "", "Thread ID to retrieve")
 	rootCmd.PersistentFlags().StringVar(&apiKey, "apiKey", "", "OpenAI API Key")
 	rootCmd.PersistentFlags().StringVar(&configPath, "config", "", "Config file path")
 }
